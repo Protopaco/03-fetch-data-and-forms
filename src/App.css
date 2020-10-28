@@ -1,0 +1,32 @@
+.App {
+  text-align: center;
+}
+
+.listing-image{
+  height: 150px;
+}
+
+.listing-name{
+  font-size: 1.5em;
+  margin: 2px;
+}
+
+.listing-info{
+  font-size: 1.25em;
+  margin: 2px;
+}
+
+.listing-li{
+  border: 1px solid black;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.gallery-ul{
+  list-style: none;
+  display: inline-flex;
+  flex-wrap: wrap;
+  width: 80%;
+  min-width: 600px;
+}
