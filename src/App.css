@@ -31,3 +31,8 @@
   width: 80%;
   min-width: 600px;
 }
+
+.sort-ul{
+  list-style: none;
+  display: inline-flex;
+}
