@@ -118,3 +118,12 @@ transform: scale(1.05);
   height: 100%;
   width: 100%;
 }
+
+.nav-list{
+  list-style: none;
+  display: inline-flex;
+}
+
+.nav-listItems{
+  padding-left: 10px;
+}

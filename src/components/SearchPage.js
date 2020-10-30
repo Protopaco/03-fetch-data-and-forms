@@ -12,6 +12,8 @@ export default class SearchPage extends React.Component {
         searchCategoryState: { key: 'Name', value: 'pokemon' },
         sortOrderState: 'asc',
         sortCategoryState: { key: 'Name', value: 'pokemon' },
+        resultsPerPageState: 5,
+        currentPageState: 1,
         loading: true,
     }
 
@@ -23,23 +25,24 @@ export default class SearchPage extends React.Component {
 
     handleSearchBarClick = async (e) => {
         e.preventDefault();
+
+        await this.setState({
+            currentPageState: 1
+        })
         await this.fetchPokemon();
     }
 
     handleSearchCategoryChange = (e) => {
         let tempObject = this.returnCategoryObject(e.target.value);
-        console.log(tempObject);
         this.setState({
             searchCategoryState: tempObject,
         })
     }
 
-
     handleSortOrderChange = (e) => {
         this.setState({
             sortOrderState: e.target.value,
         })
-
     }
 
     handleSortCatergoryChange = (e) => {
@@ -47,7 +50,36 @@ export default class SearchPage extends React.Component {
         this.setState({
             sortCategoryState: tempObject,
         })
+    }
 
+    handleResultsPerPageChange = (e) => {
+        this.setState({
+            resultsPerPageState: e.target.value,
+        })
+    }
+
+    handleNextPageClick = async (e) => {
+        e.preventDefault();
+
+        const tempValue = this.state.currentPageState + 1;
+        await this.setState({
+            currentPageState: tempValue,
+        })
+
+        await this.fetchPokemon();
+    }
+
+    handlePreviousPageClick = async (e) => {
+        e.preventDefault();
+
+        if (this.state.currentPageState > 1) {
+            const tempValue = this.state.currentPageState - 1;
+            await this.setState({
+                currentPageState: tempValue,
+            })
+        } else {
+            alert('already on first page')
+        }
     }
 
     returnCategoryObject = (value) => {
@@ -59,11 +91,19 @@ export default class SearchPage extends React.Component {
     }
 
     returnURL = () => {
+        // Base API URL
         let url = 'https://alchemy-pokedex.herokuapp.com/api/pokedex?';
+
+        // Adds search parameters
         url = url + this.state.searchCategoryState.value + '=' + this.state.searchBarState + '&';
 
+        // adds sort parameters
         url = url + 'sort=' + this.state.sortCategoryState.value + '&direction=' + this.state.sortOrderState;
-        alert(url);
+
+        // adds page parameters
+        url = url + '&page=' + this.state.currentPageState + '&perPage=' + this.state.resultsPerPageState;
+
+        // alert(url);
         return url;
     }
 
@@ -107,14 +147,28 @@ export default class SearchPage extends React.Component {
                     pokeCategoriesArray={searchableCategories}
                     handleSortCatergoryChange={this.handleSortCatergoryChange}
                     handleSearchCategoryChange={this.handleSearchCategoryChange}
+                    handleResultsPerPageChange={this.handleResultsPerPageChange}
                 />
                 {
                     this.state.loading
                         ? <img alt="pokemon-logo" className="pokemon-logo" src="/assets/spinner.gif" />
-                        : <Gallery
-                            displayItems={this.state.displayedItems}
-                            displayCategory={this.state.sortCategoryState}
-                        />
+                        : <>
+                            <Gallery
+                                displayItems={this.state.displayedItems}
+                                displayCategory={this.state.sortCategoryState}
+                            />
+                            <ul className="nav-list">
+                                <li className='nav-listItems'>
+                                    <button onClick={this.handlePreviousPageClick}>previous</button>
+                                </li>
+                                <li className='nav-listItems'>
+                                    <span>{this.state.currentPageState}</span>
+                                </li>
+                                <li className='nav-listItems'>
+                                    <button onClick={this.handleNextPageClick}>next</button>
+                                </li>
+                            </ul>
+                        </>
                 }
 
             </div>

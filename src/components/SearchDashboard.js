@@ -25,6 +25,14 @@ export default class SearchDashboard extends Component {
                         onChange={this.props.handleSortCatergoryChange}
                     />
                 </div>
+                <span className="dashboard-label"> per/page </span>
+                <div className="dashboard-element">
+                    <SortMenu
+                        options={[{ key: '5', value: 5 }, { key: '25', value: 25 }, { key: '50', value: 50 }]}
+                        onChange={this.props.handleResultsPerPageChange}
+
+                    />
+                </div>
                 <div></div>
                 <button className="search-button" >Search</button>
             </form>
