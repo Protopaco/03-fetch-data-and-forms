@@ -11,7 +11,7 @@ export default class SearchPage extends React.Component {
         displayedItems: '',
         searchBarState: '',
         sortOrderState: '<',
-        sortCategoryState: { key: 'Type', value: 'type_1' },
+        sortCategoryState: { key: 'Name', value: 'type_1' },
         loading: true,
     }
 
@@ -41,7 +41,6 @@ export default class SearchPage extends React.Component {
     }
 
     returnCategoryObject = (value) => {
-        console.log('value: ' + value)
         for (let object of searchableCategories) {
             if (object.value === value) {
                 return object;
@@ -55,6 +54,9 @@ export default class SearchPage extends React.Component {
         if (this.state.searchBarState) {
             url = url + '?' + this.state.sortCategoryState.value + '=' + this.state.searchBarState;
         }
+
+        url = url + '&sort=' + this.state.sortOrderState;
+        alert(url);
         return url;
     }
 

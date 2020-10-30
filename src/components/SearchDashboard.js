@@ -8,7 +8,7 @@ export default class SearchDashboard extends Component {
             <div>
                 <SearchBar handleSearchBarChange={this.props.handleSearchBarChange} handleSearchBarClick={this.props.handleSearchBarClick} />
                 <ul className="sort-ul">
-                    <SortMenu options={[{ key: '<', value: '<' }, { key: '>', value: '>' }]} onChange={this.props.handleSortOrderChange} />
+                    <SortMenu options={[{ key: '<', value: 'asc' }, { key: '>', value: 'desc' }]} onChange={this.props.handleSortOrderChange} />
                     <SortMenu options={this.props.pokeCategoriesArray} onChange={this.props.handleSortCatergoryChange} />
                 </ul>
             </div>
