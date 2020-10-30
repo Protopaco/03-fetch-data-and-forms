@@ -55,7 +55,7 @@ export default class SearchPage extends React.Component {
         }
 
         url = url + 'sort=' + this.state.sortCategoryState.value + '&direction=' + this.state.sortOrderState;
-        alert(url);
+        // alert(url);
         return url;
     }
 
