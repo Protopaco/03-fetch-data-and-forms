@@ -127,3 +127,14 @@ transform: scale(1.05);
 .nav-listItems{
   padding-left: 10px;
 }
+
+.header-links{
+  background-color: #003A70;
+  color: #FFCB05;
+  padding: 8px 15px;
+  font-size: 1em;
+  margin: 5px;
+  border-radius: 10px;
+  text-decoration: none;
+
+}

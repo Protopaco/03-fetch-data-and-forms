@@ -2,6 +2,7 @@ import Gallery from './Gallery.js';
 import React from 'react';
 import searchableCategories from '../data/searchable-categories.js';
 import SearchDashboard from './SearchDashboard.js';
+import NavButtons from './NavButtons.js';
 import fetch from 'superagent';
 
 export default class SearchPage extends React.Component {
@@ -157,17 +158,11 @@ export default class SearchPage extends React.Component {
                                 displayItems={this.state.displayedItems}
                                 displayCategory={this.state.sortCategoryState}
                             />
-                            <ul className="nav-list">
-                                <li className='nav-listItems'>
-                                    <button onClick={this.handlePreviousPageClick}>previous</button>
-                                </li>
-                                <li className='nav-listItems'>
-                                    <span>{this.state.currentPageState}</span>
-                                </li>
-                                <li className='nav-listItems'>
-                                    <button onClick={this.handleNextPageClick}>next</button>
-                                </li>
-                            </ul>
+                            <NavButtons handlePreviousPageClick={this.handlePreviousPageClick}
+                                handleNextPageClick={this.handleNextPageClick}
+                                currentPageState={this.state.currentPageState}
+
+                            />
                         </>
                 }
 
