@@ -1,14 +1,19 @@
 import React, { Component } from 'react'
+import Option from './Option.js';
 
 export default class SearchBar extends Component {
 
 
     render() {
         return (
-            <form onSubmit={this.props.handleSearchBarClick}>
+            <div className="dashboard-element" >
                 <input className="search-bar" onChange={this.props.handleSearchBarChange} />
-                <button className="search-button" >Search</button>
-            </form>
+                <select className="search-categories" onChange={this.props.handleSearchCategoryChange}>
+                    {this.props.searchBarCategories.map((option, i) => {
+                        return <Option value={option} key={i} />
+                    })}
+                </select>
+            </div>
         )
     }
 }

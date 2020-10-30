@@ -9,6 +9,7 @@ export default class SearchPage extends React.Component {
     state = {
         displayedItems: '',
         searchBarState: '',
+        searchCategoryState: { key: 'Name', value: 'pokemon' },
         sortOrderState: 'asc',
         sortCategoryState: { key: 'Name', value: 'pokemon' },
         loading: true,
@@ -25,11 +26,20 @@ export default class SearchPage extends React.Component {
         await this.fetchPokemon();
     }
 
+    handleSearchCategoryChange = (e) => {
+        let tempObject = this.returnCategoryObject(e.target.value);
+        console.log(tempObject);
+        this.setState({
+            searchCategoryState: tempObject,
+        })
+    }
+
 
     handleSortOrderChange = (e) => {
         this.setState({
             sortOrderState: e.target.value,
         })
+
     }
 
     handleSortCatergoryChange = (e) => {
@@ -37,6 +47,7 @@ export default class SearchPage extends React.Component {
         this.setState({
             sortCategoryState: tempObject,
         })
+
     }
 
     returnCategoryObject = (value) => {
@@ -49,26 +60,33 @@ export default class SearchPage extends React.Component {
 
     returnURL = () => {
         let url = 'https://alchemy-pokedex.herokuapp.com/api/pokedex?';
-
-        if (this.state.searchBarState) {
-            url = url + this.state.sortCategoryState.value + '=' + this.state.searchBarState + '&';
-        }
+        url = url + this.state.searchCategoryState.value + '=' + this.state.searchBarState + '&';
 
         url = url + 'sort=' + this.state.sortCategoryState.value + '&direction=' + this.state.sortOrderState;
-        // alert(url);
+        alert(url);
         return url;
     }
 
     fetchPokemon = async () => {
+
         let url = this.returnURL();
+
         this.setState({
             loading: true,
         })
-        const returnedPokemonArray = await fetch.get(url);
-        this.setState({
-            displayedItems: returnedPokemonArray.body.results,
-            loading: false,
-        });
+
+        const returnedPokemonObject = await fetch.get(url);
+        if (returnedPokemonObject.body.results.length === 0) {
+            alert('There are no results for your search, please try again')
+
+        } else {
+            const returnedPokemonArray = returnedPokemonObject.body.results;
+
+            this.setState({
+                displayedItems: returnedPokemonArray,
+                loading: false,
+            });
+        }
     }
 
 
@@ -88,10 +106,11 @@ export default class SearchPage extends React.Component {
                     handleSortOrderChange={this.handleSortOrderChange}
                     pokeCategoriesArray={searchableCategories}
                     handleSortCatergoryChange={this.handleSortCatergoryChange}
+                    handleSearchCategoryChange={this.handleSearchCategoryChange}
                 />
                 {
                     this.state.loading
-                        ? <img alt="pokemon-logo" className="pokemon-logo" src="/assets/pokemon_logo_PNG6.png" />
+                        ? <img alt="pokemon-logo" className="pokemon-logo" src="/assets/spinner.gif" />
                         : <Gallery
                             displayItems={this.state.displayedItems}
                             displayCategory={this.state.sortCategoryState}

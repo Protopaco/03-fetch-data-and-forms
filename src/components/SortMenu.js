@@ -4,13 +4,11 @@ import Option from './Option.js'
 export default class SortMenu extends Component {
     render() {
         return (
-            <li>
-                <select onChange={this.props.onChange} >
-                    {this.props.options.map((option, i) => {
-                        return <Option value={option} key={i} />
-                    })}
-                </select>
-            </li>
+            <select onChange={this.props.onChange} >
+                {this.props.options.map((option, i) => {
+                    return <Option value={option} key={i} />
+                })}
+            </select>
         )
     }
 }

@@ -1,8 +1,8 @@
 const categories = [
-    {
-        key: 'any',
-        value: ''
-    },
+    // {
+    //     key: 'any',
+    //     value: ''
+    // },
     {
         key: 'Name',
         value: 'pokemon'
