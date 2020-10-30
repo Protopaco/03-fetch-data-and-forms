@@ -6,7 +6,7 @@ export default class Gallery extends Component {
         return (
             <ul className="gallery-ul">
                 {this.props.displayItems.map((item, i) => {
-                    return <ListItem item={item} key={i} />
+                    return <ListItem displayCategory={this.props.displayCategory} item={item} key={i} />
                 })}
             </ul>
         )
