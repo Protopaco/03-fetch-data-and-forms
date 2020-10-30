@@ -1,6 +1,5 @@
 import Gallery from './Gallery.js';
 import React from 'react';
-import pokeArray from '../data/poke-data.js';
 import searchableCategories from '../data/searchable-categories.js';
 import SearchDashboard from './SearchDashboard.js';
 import fetch from 'superagent';
