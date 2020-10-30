@@ -15,6 +15,7 @@ export default class SearchPage extends React.Component {
         sortCategoryState: { key: 'Name', value: 'pokemon' },
         resultsPerPageState: 5,
         currentPageState: 1,
+        totalReturnsState: 0,
         loading: true,
     }
 
@@ -115,7 +116,7 @@ export default class SearchPage extends React.Component {
 
         let url = this.returnURL();
 
-        this.setState({
+        await this.setState({
             loading: true,
         })
 
@@ -127,9 +128,10 @@ export default class SearchPage extends React.Component {
         } else {
             const returnedPokemonArray = returnedPokemonObject.body.results;
 
-            this.setState({
+            await this.setState({
                 displayedItems: returnedPokemonArray,
                 loading: false,
+                totalReturnsState: returnedPokemonObject.body.count
             });
         }
     }
@@ -156,16 +158,18 @@ export default class SearchPage extends React.Component {
                 />
                 {
                     this.state.loading
-                        ? <img alt="pokemon-logo" className="pokemon-logo" src="/assets/spinner.gif" />
+                        ? <img alt="spinner" className="spinner" src="/assets/spinner.gif" />
                         : <>
                             <Gallery
                                 displayItems={this.state.displayedItems}
                                 displayCategory={this.state.sortCategoryState}
                             />
-                            <NavButtons handlePreviousPageClick={this.handlePreviousPageClick}
+                            <NavButtons
+                                handlePreviousPageClick={this.handlePreviousPageClick}
                                 handleNextPageClick={this.handleNextPageClick}
                                 currentPageState={this.state.currentPageState}
-
+                                totalReturnsState={this.state.totalReturnsState}
+                                resultsPerPageState={this.state.resultsPerPageState}
                             />
                         </>
                 }

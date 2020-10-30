@@ -138,3 +138,9 @@ transform: scale(1.05);
   text-decoration: none;
 
 }
+
+.spinner{
+  border-radius: 50%;
+  margin-top: 100px;
+  box-shadow: 5px 3px 15px #003A70;
+}
