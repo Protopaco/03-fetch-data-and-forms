@@ -107,7 +107,7 @@ export default class SearchPage extends React.Component {
         // adds page parameters
         url = url + '&page=' + this.state.currentPageState + '&perPage=' + this.state.resultsPerPageState;
 
-        alert(url);
+        // alert(url);
         return url;
     }
 
@@ -120,6 +120,7 @@ export default class SearchPage extends React.Component {
         })
 
         const returnedPokemonObject = await fetch.get(url);
+        // alerts user if there are no results are returned
         if (returnedPokemonObject.body.results.length === 0) {
             alert('There are no results for your search, please try again')
 
