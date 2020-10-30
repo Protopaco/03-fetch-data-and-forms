@@ -48,6 +48,9 @@ align-items: center;
 .listing-info{
   font-size: 1.25em;
   margin: 2px;
+  width: 90%;
+  font-size: .9em;
+  text-align: center;
 }
 
 .listing-li{
@@ -60,7 +63,6 @@ align-items: center;
   height: 200px;
   width: 200px;
   display: flex;
-  justify-items: center;
   align-items: center;
   flex-direction: column;
 }

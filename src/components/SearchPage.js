@@ -10,7 +10,7 @@ export default class SearchPage extends React.Component {
         displayedItems: '',
         searchBarState: '',
         sortOrderState: 'asc',
-        sortCategoryState: { key: 'Name', value: 'type_1' },
+        sortCategoryState: { key: 'Name', value: 'pokemon' },
         loading: true,
     }
 
@@ -48,12 +48,13 @@ export default class SearchPage extends React.Component {
     }
 
     returnURL = () => {
-        let url = 'https://alchemy-pokedex.herokuapp.com/api/pokedex';
+        let url = 'https://alchemy-pokedex.herokuapp.com/api/pokedex?';
 
-        url = url + '?' + this.state.sortCategoryState.value + '=' + this.state.searchBarState;
+        if (this.state.searchBarState) {
+            url = url + this.state.sortCategoryState.value + '=' + this.state.searchBarState + '&';
+        }
 
-
-        url = url + '&sort=' + this.state.sortOrderState;
+        url = url + 'sort=' + this.state.sortCategoryState.value + '&direction=' + this.state.sortOrderState;
         alert(url);
         return url;
     }
