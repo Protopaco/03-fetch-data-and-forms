@@ -78,6 +78,9 @@ export default class SearchPage extends React.Component {
             await this.setState({
                 currentPageState: tempValue,
             })
+            await this.fetchPokemon();
+
+
         } else {
             alert('already on first page')
         }
@@ -104,7 +107,7 @@ export default class SearchPage extends React.Component {
         // adds page parameters
         url = url + '&page=' + this.state.currentPageState + '&perPage=' + this.state.resultsPerPageState;
 
-        // alert(url);
+        alert(url);
         return url;
     }
 
