@@ -9,9 +9,11 @@ export default class DetailsPage extends Component {
 
     componentDidMount = async () => {
 
-        const pokemon_id = this.props.match.params.pokemon_id;
-
-        let url = `https://alchemy-pokedex.herokuapp.com/api/pokedex/${pokemon_id}`
+        const forReadibility = this.props.match.params.pokemon_id + '}';
+        console.log(forReadibility);
+        let pokemonObject = JSON.parse(forReadibility);
+        console.log(pokemonObject.pokemon)
+        let url = `https://alchemy-pokedex.herokuapp.com/api/pokedex/${pokemonObject._id}`
 
         const returnedPokemonObject = await fetch.get(url);
         console.log(returnedPokemonObject.body.pokemon)
