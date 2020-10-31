@@ -144,3 +144,38 @@ transform: scale(1.05);
   margin-top: 100px;
   box-shadow: 5px 3px 15px #003A70;
 }
+
+.nav-display{
+  color: white;
+  border-top: solid white;
+  border-bottom: solid white;
+  padding: 3px;
+
+}
+
+.details-ul{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.details-image{
+  height: 250px;
+
+}
+.details-image:hover{
+transform: scale(1.2)
+}
+
+.details-div{
+  height: 500px;
+  width: 300px;
+  border-radius: 20px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+  border: 2px solid;
+}

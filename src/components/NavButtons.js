@@ -12,7 +12,7 @@ export default class NavButtons extends Component {
                     </button>
                 </li>
                 <li className='nav-listItems'>
-                    <span>{this.props.currentPageState} / {Math.ceil(this.props.totalReturnsState / this.props.resultsPerPageState)}</span>
+                    <span className='nav-display'>{this.props.currentPageState} / {Math.ceil(this.props.totalReturnsState / this.props.resultsPerPageState)}</span>
                 </li>
                 <li className='nav-listItems'>
                     <button
