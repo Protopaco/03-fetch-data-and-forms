@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
-import ListItem from './ListItem.js';
+import GeneratedListItem from './ListItem.js';
+import { List } from '@material-ui/core';
+import { galleryList } from '../data/constants.js'
+
 
 export default class Gallery extends Component {
     render() {
         return (
-            <ul className="gallery-ul">
+            <List style={galleryList}>
                 {this.props.displayItems.map((item, i) => {
-                    return <ListItem displayCategory={this.props.displayCategory}
+                    return <GeneratedListItem displayCategory={this.props.displayCategory}
                         item={item} key={i} />
                 })}
-            </ul>
+            </List>
         )
     }
 }

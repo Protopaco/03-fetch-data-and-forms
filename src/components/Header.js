@@ -1,22 +1,27 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
-import { primaryColorButton } from '../data/constants.js';
+import { Link, } from 'react-router-dom';
+import IconButton from '@material-ui/core/IconButton';
+import HomeIcon from '@material-ui/icons/Home';
+import SearchIcon from '@material-ui/icons/Search';
 import { headerFrame } from '../data/constants.js';
-import { Paper } from '@material-ui/core';
+import { Paper, ButtonGroup } from '@material-ui/core';
 
 
 export default class Header extends Component {
+
     render() {
         return (
             <Paper style={headerFrame}>
-                <Link to="/">
-                    <Button variant="contained" style={primaryColorButton} >Home</Button>
-                </Link>
-                <Link to="/Search">
-                    <Button variant="contained" style={primaryColorButton}>
-                        Search</Button>
-                </Link>
+                <ButtonGroup variant="text" color='primary' size="medium" aria-label='contained primary button group'>
+
+                    <IconButton component={Link} to='/' >
+                        <HomeIcon />
+                    </IconButton>
+
+                    <IconButton component={Link} to='/Search' >
+                        <SearchIcon />
+                    </IconButton>
+                </ButtonGroup>
             </Paper>
         )
     }

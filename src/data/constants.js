@@ -5,12 +5,6 @@ export const accentColor = '#ff1f1f';
 export const secondaryAccentColor = '#5db9ff'
 export const textColor = 'white';
 
-export const primaryColorButton = {
-    backgroundColor: primaryColor,
-    color: textColor,
-    padding: '8px 15px',
-    margin: '5px',
-}
 
 export const elementFrame = {
     backgroundColor: secondaryColor,
@@ -50,13 +44,21 @@ export const listItemImageDiv = {
 }
 
 export const listItemCardBreakDiv = {
-    backgroundColor: accentColor,
+    backgroundColor: secondaryAccentColor,
 }
 
 export const listItemCardContent = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    backgroundColor: secondaryAccentColor,
+    backgroundColor: primaryColor,
     padding: '10px',
+}
+
+export const galleryList = {
+    display: 'inline-flex',
+    flexWrap: 'wrap',
+    width: '100%',
+    maxWidth: '1200px',
+    justifyContent: 'center',
 }
