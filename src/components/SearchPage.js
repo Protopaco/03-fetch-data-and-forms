@@ -12,7 +12,7 @@ export default class SearchPage extends React.Component {
     }
 
     handleSearchBarChange = (e) => {
-        this.setState({
+        this.props.handleStoreSearchState({
             searchBarState: e.target.value,
         })
     }
@@ -20,36 +20,35 @@ export default class SearchPage extends React.Component {
     handleSearchBarClick = async (e) => {
         e.preventDefault();
 
-        await this.setState({
+        await this.props.handleStoreSearchState({
             currentPageState: 1
         })
         await this.fetchPokemon();
 
-        this.props.handleStoreSearchState(this.state)
     }
 
     handleSearchCategoryChange = (e) => {
         let tempObject = this.returnCategoryObject(e.target.value);
-        this.setState({
+        this.props.handleStoreSearchState({
             searchCategoryState: tempObject,
         })
     }
 
     handleSortOrderChange = (e) => {
-        this.setState({
+        this.props.handleStoreSearchState({
             sortOrderState: e.target.value,
         })
     }
 
     handleSortCatergoryChange = (e) => {
         let tempObject = this.returnCategoryObject(e.target.value);
-        this.setState({
+        this.props.handleStoreSearchState({
             sortCategoryState: tempObject,
         })
     }
 
     handleResultsPerPageChange = (e) => {
-        this.setState({
+        this.props.handleStoreSearchState({
             resultsPerPageState: e.target.value,
         })
     }
@@ -57,24 +56,22 @@ export default class SearchPage extends React.Component {
     handleNextPageClick = async (e) => {
         e.preventDefault();
 
-        const tempValue = this.state.currentPageState + 1;
-        await this.setState({
+        const tempValue = this.props.storedSearchState.currentPageState + 1;
+        await this.props.handleStoreSearchState({
             currentPageState: tempValue,
         })
 
-        this.props.handleStoreSearchState(this.state)
         await this.fetchPokemon();
     }
 
     handlePreviousPageClick = async (e) => {
         e.preventDefault();
 
-        if (this.state.currentPageState > 1) {
-            const tempValue = this.state.currentPageState - 1;
-            await this.setState({
+        if (this.props.storedSearchState.currentPageState > 1) {
+            const tempValue = this.props.storedSearchState.currentPageState - 1;
+            await this.props.handleStoreSearchState({
                 currentPageState: tempValue,
             })
-            this.props.handleStoreSearchState(this.state)
             await this.fetchPokemon();
 
 
@@ -96,13 +93,13 @@ export default class SearchPage extends React.Component {
         let url = 'https://alchemy-pokedex.herokuapp.com/api/pokedex?';
 
         // Adds search parameters
-        url = url + this.state.searchCategoryState.value + '=' + this.state.searchBarState + '&';
+        url = url + this.props.storedSearchState.searchCategoryState.value + '=' + this.props.storedSearchState.searchBarState + '&';
 
         // adds sort parameters
-        url = url + 'sort=' + this.state.sortCategoryState.value + '&direction=' + this.state.sortOrderState;
+        url = url + 'sort=' + this.props.storedSearchState.sortCategoryState.value + '&direction=' + this.props.storedSearchState.sortOrderState;
 
         // adds page parameters
-        url = url + '&page=' + this.state.currentPageState + '&perPage=' + this.state.resultsPerPageState;
+        url = url + '&page=' + this.props.storedSearchState.currentPageState + '&perPage=' + this.props.storedSearchState.resultsPerPageState;
 
         // alert(url);
         return url;
@@ -124,26 +121,20 @@ export default class SearchPage extends React.Component {
         } else {
             const returnedPokemonArray = returnedPokemonObject.body.results;
 
-            await this.setState({
+            await this.props.handleStoreSearchState({
                 displayedItems: returnedPokemonArray,
-                loading: false,
                 totalReturnsState: returnedPokemonObject.body.count
             });
+            await this.setState({
+                loading: false,
+            })
         }
     }
 
-    loadStoredSearchState = async () => {
-        await this.setState(this.props.StoredSearchState)
-    }
-
-
-
     componentDidMount = async () => {
-        await this.loadStoredSearchState()
         await this.fetchPokemon();
 
     }
-
 
     render() {
         return (
@@ -162,15 +153,15 @@ export default class SearchPage extends React.Component {
                         ? <img alt="spinner" className="spinner" src="/assets/spinner.gif" />
                         : <>
                             <Gallery
-                                displayItems={this.state.displayedItems}
-                                displayCategory={this.state.sortCategoryState}
+                                displayItems={this.props.storedSearchState.displayedItems}
+                                displayCategory={this.props.storedSearchState.sortCategoryState}
                             />
                             <NavButtons
                                 handlePreviousPageClick={this.handlePreviousPageClick}
                                 handleNextPageClick={this.handleNextPageClick}
-                                currentPageState={this.state.currentPageState}
-                                totalReturnsState={this.state.totalReturnsState}
-                                resultsPerPageState={this.state.resultsPerPageState}
+                                currentPageState={this.props.storedSearchState.currentPageState}
+                                totalReturnsState={this.props.storedSearchState.totalReturnsState}
+                                resultsPerPageState={this.props.storedSearchState.resultsPerPageState}
                             />
                         </>
                 }

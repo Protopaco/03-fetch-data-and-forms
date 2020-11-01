@@ -46,7 +46,7 @@ export default class App extends Component {
               path="/search"
               exact
               render={(routerProps) => <SearchPage {...routerProps} handleStoreSearchState={this.handleStoreSearchState}
-                StoredSearchState={this.state} />}
+                storedSearchState={this.state} />}
             />
             <Route
               path="/details/:pokemon_id"
