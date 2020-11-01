@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import fetch from 'superagent';
+import { Link } from 'react-router-dom';
 
 export default class DetailsPage extends Component {
 
@@ -34,7 +35,8 @@ export default class DetailsPage extends Component {
                         <li className="details-info">Height: {this.state.pokemonObject.height}</li>
                         <li className="details-info">Weight: {this.state.pokemonObject.weight}</li>
                     </ul>
-                </ div>
+                </div>
+                <Link to="/Search">back</Link>
             </div>
         )
     }
