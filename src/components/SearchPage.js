@@ -8,14 +8,6 @@ import fetch from 'superagent';
 export default class SearchPage extends React.Component {
 
     state = {
-        displayedItems: '',
-        searchBarState: '',
-        searchCategoryState: { key: 'Name', value: 'pokemon' },
-        sortOrderState: 'asc',
-        sortCategoryState: { key: 'Name', value: 'pokemon' },
-        resultsPerPageState: 5,
-        currentPageState: 1,
-        totalReturnsState: 0,
         loading: true,
     }
 
@@ -32,6 +24,8 @@ export default class SearchPage extends React.Component {
             currentPageState: 1
         })
         await this.fetchPokemon();
+
+        this.props.handleStoreSearchState(this.state)
     }
 
     handleSearchCategoryChange = (e) => {
@@ -68,6 +62,7 @@ export default class SearchPage extends React.Component {
             currentPageState: tempValue,
         })
 
+        this.props.handleStoreSearchState(this.state)
         await this.fetchPokemon();
     }
 
@@ -79,6 +74,7 @@ export default class SearchPage extends React.Component {
             await this.setState({
                 currentPageState: tempValue,
             })
+            this.props.handleStoreSearchState(this.state)
             await this.fetchPokemon();
 
 
@@ -136,9 +132,14 @@ export default class SearchPage extends React.Component {
         }
     }
 
+    loadStoredSearchState = async () => {
+        await this.setState(this.props.StoredSearchState)
+    }
+
 
 
     componentDidMount = async () => {
+        await this.loadStoredSearchState()
         await this.fetchPokemon();
 
     }
