@@ -3,8 +3,10 @@
   text-align: center;
 }
 body{
-  background-color: #3D7DCA;
+  background-color: #003A70;
   height: 100%;
+  display: flex;
+  justify-content: center;
   
 }
 header{
@@ -37,9 +39,9 @@ align-items: center;
   width: auto;
 }
 
-.listing-image{
+/* .listing-image{
   height: 150px;
-}
+} */
 
 .listing-name{
   font-size: 1.2em;

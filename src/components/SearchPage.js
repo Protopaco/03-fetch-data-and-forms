@@ -4,6 +4,9 @@ import searchableCategories from '../data/searchable-categories.js';
 import SearchDashboard from './SearchDashboard.js';
 import NavButtons from './NavButtons.js';
 import fetch from 'superagent';
+import { Paper } from '@material-ui/core';
+import { elementFrame } from '../data/constants.js';
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
 
 export default class SearchPage extends React.Component {
 
@@ -138,7 +141,7 @@ export default class SearchPage extends React.Component {
 
     render() {
         return (
-            <div className="SearchPage" >
+            <Paper style={elementFrame}>
                 <SearchDashboard
                     handleSearchBarClick={this.handleSearchBarClick}
                     handleSearchBarChange={this.handleSearchBarChange}
@@ -166,7 +169,7 @@ export default class SearchPage extends React.Component {
                         </>
                 }
 
-            </div>
+            </Paper>
         );
     }
 }
