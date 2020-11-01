@@ -11,7 +11,26 @@ import Header from './components/Header.js';
 import DetailsPage from './components/DetailsPage.js';
 
 
+
 export default class App extends Component {
+
+  state = {
+    displayedItems: '',
+    searchBarState: '',
+    searchCategoryState: { key: 'Name', value: 'pokemon' },
+    sortOrderState: 'asc',
+    sortCategoryState: { key: 'Name', value: 'pokemon' },
+    resultsPerPageState: 5,
+    currentPageState: 1,
+    totalReturnsState: 0,
+    loading: true,
+  }
+
+  handleStoreSearchState = (searchStateObject) => {
+    this.setState(searchStateObject);
+  }
+
+
   render() {
     return (
       <div className="searchpage-main">
@@ -26,7 +45,8 @@ export default class App extends Component {
             <Route
               path="/search"
               exact
-              render={(routerProps) => <SearchPage {...routerProps} />}
+              render={(routerProps) => <SearchPage {...routerProps} handleStoreSearchState={this.handleStoreSearchState}
+                StoredSearchState={this.state} />}
             />
             <Route
               path="/details/:pokemon_id"
