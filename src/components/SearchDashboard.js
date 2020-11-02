@@ -10,7 +10,7 @@ export default class SearchDashboard extends Component {
         return (
             <form onSubmit={this.props.handleSearchBarClick} style={dashboardForm}>
                 <div style={searchMenuDiv}>
-                    <TextField id="search-bar" label="search" onChange={this.props.handleSearchBarChange} />
+                    <TextField id="search-bar" label="search" value={this.props.storedSearchState.searchBarState} onChange={this.props.handleSearchBarChange} />
                     <SortMenu
                         id="search-category-label"
                         label="search category"
