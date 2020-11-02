@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Select, MenuItem, InputLabel, FormControl } from '@material-ui/core';
-import { inputStyle } from '../data/constants.js';
 
 
 export default class SortMenu extends Component {
