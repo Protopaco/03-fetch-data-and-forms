@@ -2,14 +2,15 @@ import React, { Component } from 'react'
 import fetch from 'superagent';
 import { Link } from 'react-router-dom';
 import { Paper, Card, Typography, CardContent, Button } from '@material-ui/core';
-import { elementFrame, detailItemCard, detailItemImageDiv, detailItemCardBreakDiv, listItemCardContent } from '../data/constants.js';
-import { VictoryBar } from 'victory';
+import { elementFrame, detailItemCard, detailItemImageDiv, detailItemCardBreakDiv, listItemCardContent, victoryBarStyle } from '../data/constants.js';
+import { VictoryBar, VictoryTheme, VictoryChart } from 'victory';
 
 
 export default class DetailsPage extends Component {
 
     state = {
-        pokemonObject: { pokemon: 'error' }
+        pokemonObject: { pokemon: 'error' },
+        chartData: [],
     }
 
     componentDidMount = async () => {
@@ -22,6 +23,24 @@ export default class DetailsPage extends Component {
 
         await this.setState({
             pokemonObject: returnedPokemonObject.body
+        })
+
+        this.generateChartData();
+    }
+
+    generateChartData = async () => {
+
+        const chartData = [
+            { x: 'hp', y: this.state.pokemonObject.hp },
+            { x: 'height', y: this.state.pokemonObject.height },
+            { x: 'weight', y: this.state.pokemonObject.weight },
+            { x: 'attack', y: this.state.pokemonObject.attack },
+            { x: 'defense', y: this.state.pokemonObject.defense },
+            { x: 'speed', y: this.state.pokemonObject.speed }
+        ]
+
+        this.setState({
+            chartData: chartData
         })
     }
     render() {
@@ -63,9 +82,22 @@ export default class DetailsPage extends Component {
                         </Typography>
                     </CardContent>
                 </Card>
-
-
-                <Button variant='contained' color='primary' component={Link} to="/Search" style={{ marginTop: '0px' }}>back</Button>
+                <div>
+                    <VictoryChart
+                        domainPadding={20} animate={{
+                            duration: 2000,
+                            onLoad: { duration: 1000 }
+                        }}>
+                        <VictoryBar
+                            data={this.state.chartData}
+                            x="x"
+                            y="y"
+                            style={victoryBarStyle}
+                            barRatio={.7}
+                        />
+                    </VictoryChart>
+                </div>
+                <Button variant='contained' color='primary' component={Link} to="/Search" style={{ marginTop: '0px', marginBottom: '20px' }}>back</Button>
             </Paper>
         )
     }

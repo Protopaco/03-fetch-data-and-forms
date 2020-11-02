@@ -11,6 +11,14 @@ import { listItemCard, listItemImageDiv, listItemCardContent, listItemCardBreakD
 
 export default class GeneratedListItem extends Component {
 
+    returnDisplayCategory = () => {
+        if (this.props.displayCategory.key !== 'name') {
+            return this.props.displayCategory.key + ': ' + this.props.item[this.props.displayCategory.value]
+        }
+        else {
+            return 'type: ' + this.props.item.type_1
+        }
+    }
 
     render() {
 
@@ -30,7 +38,7 @@ export default class GeneratedListItem extends Component {
                             {this.props.item.pokemon}
                         </Typography>
                         <Typography >
-                            {this.props.displayCategory.key + ': ' + this.props.item[this.props.displayCategory.value]}
+                            {this.returnDisplayCategory()}
                         </Typography>
                     </CardContent>
                 </Card>

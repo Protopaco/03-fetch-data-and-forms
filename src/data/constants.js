@@ -11,8 +11,8 @@ export const elementFrame = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    height: '85vh',
     minWidth: '1050px',
+    minHeight: '85vh',
     width: '90vw',
     overflow: 'auto',
 }
@@ -115,4 +115,14 @@ export const detailItemCardContent = {
     alignItems: 'center',
     backgroundColor: primaryColor,
     padding: '10px',
+    minHeight: '300px',
+}
+
+export const victoryBarStyle = {
+    data: {
+        fill: secondaryAccentColor,
+        stroke: primaryColor,
+        strokeWidth: '.5'
+
+    }
 }
