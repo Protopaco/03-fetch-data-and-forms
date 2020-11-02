@@ -82,3 +82,37 @@ export const inputStyle = {
     paddingRight: '5px',
     width: '150px',
 }
+
+
+export const detailItemCard = {
+    width: '450px',
+    height: '700px',
+    color: textColor,
+    margin: '20px',
+    marginBottom: '10px',
+    display: 'grid',
+    gridTemplateRows: '4fr .1fr 4fr',
+}
+
+export const detailItemImageDiv = {
+    width: 'auto',
+    height: '100%',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'auto 100%',
+    display: 'flex',
+    flexDirection: 'column-reverse',
+    JustifyItems: 'flex-end'
+}
+
+export const detailItemCardBreakDiv = {
+    backgroundColor: secondaryAccentColor,
+}
+
+export const detailItemCardContent = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    backgroundColor: primaryColor,
+    padding: '10px',
+}
