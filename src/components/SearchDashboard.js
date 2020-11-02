@@ -1,40 +1,51 @@
 import React, { Component } from 'react'
-import SearchBar from './SearchBar.js';
 import SortMenu from './SortMenu.js';
+import { Button, TextField } from '@material-ui/core';
+import { dashboardForm, searchMenuDiv } from '../data/constants.js';
+
+
 
 export default class SearchDashboard extends Component {
     render() {
         return (
-            <form className='dashboard-div' onSubmit={this.props.handleSearchBarClick}>
-                <span className="dashboard-label"> search </span>
-                <SearchBar
-                    handleSearchBarChange={this.props.handleSearchBarChange}
-                    handleSearchBarClick={this.props.handleSearchBarClick}
-                    searchBarCategories={this.props.pokeCategoriesArray}
-                    handleSearchCategoryChange={this.props.handleSearchCategoryChange}
-                />
-                <span className="dashboard-label"> sort </span>
-                <div className="dashboard-element">
+            <form onSubmit={this.props.handleSearchBarClick} style={dashboardForm}>
+                <div style={searchMenuDiv}>
+                    <TextField id="search-bar" label="search" onChange={this.props.handleSearchBarChange} />
                     <SortMenu
-                        options={[{ key: '<', value: 'asc' }, { key: '>', value: 'desc' }]}
-                        onChange={this.props.handleSortOrderChange}
+                        id="search-category-label"
+                        label="search category"
+                        options={this.props.pokeCategoriesArray}
+                        onChange={this.props.handleSearchCategoryChange}
+                        value={this.props.storedSearchState.searchCategoryState.value}
                     />
-
+                    <Button variant='contained' type='submit' color='primary'>Search</Button>
+                </div>
+                <div style={searchMenuDiv}>
                     <SortMenu
+                        id="sort-category-label"
+                        label="sort category"
                         options={this.props.pokeCategoriesArray}
                         onChange={this.props.handleSortCatergoryChange}
+                        value={this.props.storedSearchState.sortCategoryState.value}
                     />
-                </div>
-                <span className="dashboard-label"> per/page </span>
-                <div className="dashboard-element">
-                    <SortMenu
-                        options={[{ key: '5', value: 5 }, { key: '25', value: 25 }, { key: '50', value: 50 }]}
-                        onChange={this.props.handleResultsPerPageChange}
 
+                    <SortMenu
+                        id="sort-direction-label"
+                        label="sort direction"
+                        options={[{ key: 'ascending', value: 'asc' }, { key: 'descending', value: 'desc' }]}
+                        onChange={this.props.handleSortOrderChange}
+                        value={this.props.storedSearchState.sortOrderState}
                     />
+
+                    <SortMenu
+                        id="results-per-page"
+                        label="results per page"
+                        options={[{ key: '6', value: 6 }, { key: '12', value: 12 }, { key: '24', value: 24 }]}
+                        onChange={this.props.handleResultsPerPageChange}
+                        value={this.props.storedSearchState.resultsPerPageState} />
+
+                    <Button variant='contained' type='submit' color='primary'>Sort</Button>
                 </div>
-                <div></div>
-                <button className="search-button" >Search</button>
             </form>
         )
     }

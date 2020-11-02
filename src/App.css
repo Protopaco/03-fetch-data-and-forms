@@ -1,86 +1,19 @@
-.App {
-  text-align: center;
-}
-body{
-  background-color: #3D7DCA;
-  height: 100%;
-  
-}
-header{
-  background-color: #FFCB05;
-  height: 100px;
-  border-bottom: 2px solid #003A70;
-  margin-bottom: 25px;
-  font-size: 2em;
-  color:#003A70;
-  box-shadow: 3px 3px #003A70;
-}
 
-.landingpage-main{
-  background-color: #FFCB05;
+body{
+  background-color: #003A70;
+  height: 100%;
   display: flex;
   justify-content: center;
-  height: 800px;
-  align-items: center;
-}
+  text-align: center;
+  list-style: none;
 
-.SearchPage{
-display: flex;
-flex-direction: column;
-align-items: center;
 }
-
 
 .pokemon-logo{
   height: 200px;
   width: auto;
 }
 
-.listing-image{
-  height: 150px;
-}
-
-.listing-name{
-  font-size: 1.2em;
-  margin: 2px;
-}
-
-.listing-info{
-  font-size: 1.25em;
-  margin: 2px;
-  width: 90%;
-  font-size: .9em;
-  text-align: center;
-}
-
-.listing-li{
-  border: 1px solid white;
-  margin: 10px;
-  border-radius: 10px;
-  padding: 15px;
-  color: white;
-  box-shadow: 2px 2px gray;
-  height: 200px;
-  width: 200px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.listing-li:hover{
-transform: scale(1.05);
-}
-
-.gallery-ul{
-  background-color: #FFCB05;
-  list-style: none;
-  display: inline-flex;
-  flex-wrap: wrap;
-  width: 80%;
-  min-width: 600px;
-  border-radius: 15px;
-  justify-content: center;
-}
 
 .sort-ul{
   list-style: none;
@@ -102,7 +35,7 @@ transform: scale(1.05);
   justify-self: flex-end;
 }
 
-.dashboard-div{
+.dashboard-form{
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;

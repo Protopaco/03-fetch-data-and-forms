@@ -4,15 +4,15 @@ const categories = [
     //     value: ''
     // },
     {
-        key: 'Name',
+        key: 'name',
         value: 'pokemon'
     },
     {
-        key: 'Type',
+        key: 'type',
         value: 'type_1'
     },
     {
-        key: 'HP',
+        key: 'hp',
         value: 'hp'
     },
     {
@@ -20,11 +20,11 @@ const categories = [
         value: 'weight'
     },
     {
-        key: 'Egg Group',
+        key: 'egg Group',
         value: 'egg_group_1'
     },
     {
-        key: 'Generation',
+        key: 'generation',
         value: 'generation_id'
     }
 ]
