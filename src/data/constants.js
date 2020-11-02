@@ -12,7 +12,7 @@ export const elementFrame = {
     flexDirection: 'column',
     alignItems: 'center',
     height: '85vh',
-    minWidth: '1300px',
+    minWidth: '1050px',
     width: '90vw',
     overflow: 'auto',
 }
@@ -61,4 +61,24 @@ export const galleryList = {
     width: '100%',
     maxWidth: '1200px',
     justifyContent: 'center',
+}
+
+export const dashboardForm = {
+    display: 'inline-flex',
+    paddingTop: '35px',
+    width: '100%',
+    justifyContent: 'center',
+    alignContent: 'center',
+
+}
+export const searchMenuDiv = {
+    display: 'inline-flex',
+    width: '100%',
+    justifyContent: 'center'
+}
+
+export const inputStyle = {
+    paddingLeft: '5px',
+    paddingRight: '5px',
+    width: '150px',
 }

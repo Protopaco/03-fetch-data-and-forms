@@ -150,6 +150,7 @@ export default class SearchPage extends React.Component {
                     handleSortCatergoryChange={this.handleSortCatergoryChange}
                     handleSearchCategoryChange={this.handleSearchCategoryChange}
                     handleResultsPerPageChange={this.handleResultsPerPageChange}
+                    storedSearchState={this.props.storedSearchState}
                 />
                 {
                     this.state.loading

@@ -17,10 +17,10 @@ export default class App extends Component {
   state = {
     displayedItems: '',
     searchBarState: '',
-    searchCategoryState: { key: 'Name', value: 'pokemon' },
+    searchCategoryState: { key: 'name', value: 'pokemon' },
     sortOrderState: 'asc',
-    sortCategoryState: { key: 'Name', value: 'pokemon' },
-    resultsPerPageState: 5,
+    sortCategoryState: { key: 'name', value: 'pokemon' },
+    resultsPerPageState: 6,
     currentPageState: 1,
     totalReturnsState: 0,
     loading: true,

@@ -12,13 +12,11 @@ export default class NavButtons extends Component {
             <ButtonGroup
                 variant="text"
                 color='primary'
-                size="large"
                 aria-label='contained primary button group'>
                 <IconButton
                     component={Link}
                     onClick={this.props.handlePreviousPageClick}
-                    disabled={this.props.currentPageState === 1}
-                >
+                    disabled={this.props.currentPageState === 1}>
                     <ChevronLeft />
                 </IconButton>
                 <Button>
@@ -27,8 +25,7 @@ export default class NavButtons extends Component {
                 <IconButton
                     component={Link}
                     onClick={this.props.handleNextPageClick}
-                    disabled={this.props.currentPageState === Math.ceil(this.props.totalReturnsState / this.props.resultsPerPageState)}
-                >
+                    disabled={this.props.currentPageState === Math.ceil(this.props.totalReturnsState / this.props.resultsPerPageState)}>
                     <ChevronRight />
                 </IconButton>
             </ButtonGroup>
