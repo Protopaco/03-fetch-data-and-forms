@@ -3,7 +3,7 @@ import fetch from 'superagent';
 import { Link } from 'react-router-dom';
 import { Paper, Card, Typography, CardContent, Button } from '@material-ui/core';
 import { elementFrame, detailItemCard, detailItemImageDiv, detailItemCardBreakDiv, listItemCardContent, victoryBarStyle } from '../data/constants.js';
-import { VictoryBar, VictoryTheme, VictoryChart } from 'victory';
+import { VictoryBar, VictoryChart } from 'victory';
 
 
 export default class DetailsPage extends Component {
